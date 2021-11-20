@@ -8,6 +8,8 @@
  * Purpose : Defines the global settings for the game
 """
 
+import os
+
 
 class AppGlobals:
     """Defines all the global variables needed for the application"""
@@ -18,22 +20,27 @@ class AppGlobals:
         """
         self.__app_info()
         self.__app_settings()
+        self.__operation_global_variables()
 
     def __app_info(self) -> None:
         """
         Defines all the app information
+
         :return: None
         """
+        self.__app_name__ = "sashArcade"
         self.__author__ = "Sashwat K"
         self.__license__ = "GPL"
         self.__version__ = "0.0.1"
         self.__maintainer__ = "Sashwat K"
         self.__email__ = "sashwat0001@gmail.com"
         self.__project_link__ = "https://github.com/sashwat-project-software/sash-arcade"
+        self.__project_wiki_link__ = "https://github.com/sashwat-project-software/sash-arcade/wiki"
 
     def __app_settings(self) -> None:
         """
         Defines global settings for the application
+
         :return: None
         """
         # Main Windows Settings
@@ -47,3 +54,9 @@ class AppGlobals:
         self.app_about_width_x = 0
         self.app_about_height_y = 0
 
+    def __operation_global_variables(self) -> None:
+        """
+
+        :return:
+        """
+        self.app_path = os.path.dirname(__file__)
