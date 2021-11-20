@@ -45,10 +45,8 @@ class AppGlobals:
         """
         # Main Windows Settings
         self.app_title = "SashArcade :: Simple set of FOSS games"
-        self.app_width_x = 500
-        self.app_height_y = 300
-        self.app_padding_x = 20
-        self.app_padding_y = 20
+        self.app_padding_x = 50
+        self.app_padding_y = 50
         # About Window Settings
         self.app_about_title = f"{self.app_title} :: About Us"
         self.app_about_width_x = 0
