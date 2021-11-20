@@ -4,7 +4,7 @@
  * File name : app.py
  * Author : Sashwat K <sashwat0001@gmail.com>
  * Created on : 20 November 2021
- * Last updated : 20 November 2021
+ * Last updated : 21 November 2021
  * Purpose : Defines the global settings for the game
 """
 
@@ -12,7 +12,6 @@
 import tkinter
 import os
 import webbrowser
-
 # App Local Libraries
 from settings import AppGlobals
 
@@ -100,6 +99,11 @@ def generate_table() -> None:
 
 
 def open_game(game_name) -> None:
+    """ Definition to open game
+
+    :param game_name: dict of game to execute
+    :return: None
+    """
     print(f"{game_name}")
 
 

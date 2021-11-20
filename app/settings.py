@@ -4,7 +4,7 @@
  * File name : settings.py
  * Author : Sashwat K <sashwat0001@gmail.com>
  * Created on : 20 November 2021
- * Last updated : 20 November 2021
+ * Last updated : 21 November 2021
  * Purpose : Defines the global settings for the game
 """
 
@@ -39,7 +39,7 @@ class AppGlobals:
 
     def __app_settings(self) -> None:
         """
-        Defines global settings for the application
+        Defines global UI settings for the application
 
         :return: None
         """
@@ -53,8 +53,8 @@ class AppGlobals:
         self.app_about_height_y = 0
 
     def __operation_global_variables(self) -> None:
-        """
+        """ Definition to define app global variables
 
-        :return:
+        :return: None
         """
         self.app_path = os.path.dirname(__file__)
