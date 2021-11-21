@@ -55,7 +55,6 @@ class AppGlobals:
         self.question_font = ("Arial", 20, "italic")
         self.window_title = "Its Quiz time!!"
 
-
     def __get_quiz_data(self) -> None:
         """ """
         self.available_quiz_categories = {
@@ -68,7 +67,7 @@ class AppGlobals:
             "Animals": 27,
             "vehicles": 28
         }
-        self.quiz_difficulty = ["Easy", "Medium", "Hard"]
+        self.quiz_difficulty = ["easy", "medium", "hard"]
         self.max_question_count = 50
 
     def __operation_global_variables(self) -> None:
@@ -94,4 +93,3 @@ class AppGlobals:
         self.final_score = 0
         self.no_of_correct_ans = 0
         self.no_of_wrong_ans = 0
-
