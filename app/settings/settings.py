@@ -15,8 +15,7 @@ class AppGlobals:
     """Defines all the global variables needed for the application"""
 
     def __init__(self):
-        """ Defines global variables
-        """
+        """ Defines global variables"""
         self.__app_info()
         self.__app_settings()
         self.__operation_global_variables()

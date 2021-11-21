@@ -9,15 +9,14 @@
 """
 
 # Global Libraries
+import os
+import platform
+import subprocess
 import tkinter
 import tkinter.messagebox
-import os
 import webbrowser
-import subprocess, os, platform
 # App Local Libraries
 from settings.settings import AppGlobals
-
-# from games.quiz.app import quiz
 
 # Global Variables for UI
 title_label_main_name = "Welcome to SashArcade"
@@ -57,6 +56,11 @@ def main() -> None:
 
 
 def open_json_file(filename) -> None:
+    """
+
+    :param filename: file to open on text editor
+    :return:
+    """
     if platform.system() == "Darwin":
         subprocess.call(("open", filename))
     elif platform.system() == "Windows":
@@ -120,28 +124,6 @@ def generate_table() -> None:
         game_ui_dict[data["game_name"]] = row_dict
 
 
-def open_game(game_name) -> None:
-    """ Definition to open game
-
-    :param game_name: dict of game to execute
-    :return: None
-    """
-    tkinter.messagebox.showinfo(
-        f"Opening {game_name['game_name']}",
-        f"Opening game {game_name['game_name']}!!")
-
-
-def open_game_settings(game_name) -> None:
-    """
-
-    :return:
-    """
-    tkinter.messagebox.showinfo(
-        f"Opening {game_name['game_name']}",
-        f"Opening game {game_name['game_name']} settings!!")
-    open_json_file(game_name["game_settings"])
-
-
 def get_game_list() -> list:
     """ Returns the dict of available games
 
@@ -163,6 +145,31 @@ def get_game_list() -> list:
             }
             game_info.append(game_dict)
     return game_info
+
+
+def open_game(game_dict_data) -> None:
+    """ Definition to open game
+
+    :param game_dict_data: dict of game to execute
+    :return: None
+    """
+    tkinter.messagebox.showinfo(
+        f"Opening {game_dict_data['game_name']}",
+        f"Opening game {game_dict_data['game_name']}!!")
+    process = subprocess.Popen(f"python3 {game_dict_data['game_path']}", shell=True)
+    output, error = process.communicate()
+
+
+def open_game_settings(game_name) -> None:
+    """ Definition to open game's settings.json file in text editor
+
+    :param game_name: dict of game to execute
+    :return: None
+    """
+    tkinter.messagebox.showinfo(
+        f"Opening {game_name['game_name']}",
+        f"Opening game {game_name['game_name']} settings!!")
+    open_json_file(game_name["game_settings"])
 
 
 if __name__ == '__main__':
