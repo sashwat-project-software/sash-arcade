@@ -53,6 +53,7 @@ class AppGlobals:
         self.header = ("Arial", 22, "bold")
         self.score_font = ("Arial", 14, "bold")
         self.question_font = ("Arial", 20, "italic")
+        self.window_title = "Its Quiz time!!"
 
 
     def __get_quiz_data(self) -> None:
@@ -89,3 +90,8 @@ class AppGlobals:
             "category": self.selected_quiz_category,
             "difficulty": self.selected_quiz_difficulty
         }
+        self.user_name = ""
+        self.final_score = 0
+        self.no_of_correct_ans = 0
+        self.no_of_wrong_ans = 0
+
