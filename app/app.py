@@ -10,10 +10,12 @@
 
 # Global Libraries
 import tkinter
+import tkinter.messagebox
 import os
 import webbrowser
 # App Local Libraries
-from settings import AppGlobals
+from settings.settings import AppGlobals
+# from games.quiz.app import quiz
 
 # Global Variables for UI
 title_label_main_name = "Welcome to SashArcade"
@@ -55,7 +57,7 @@ def open_project_link() -> None: webbrowser.open(settings.__project_link__, new=
 
 
 def window_labels() -> None:
-    """Definition to define main windows's labels
+    """ Definition to define main windows's labels
 
     :return: None
     """
@@ -104,11 +106,14 @@ def open_game(game_name) -> None:
     :param game_name: dict of game to execute
     :return: None
     """
-    print(f"{game_name}")
+    tkinter.messagebox.showinfo(
+        f"Opening {game_name['game_name']}",
+        f"Opening game {game_name['game_name']}!!")
+    # quiz()
 
 
 def get_game_list() -> list:
-    """Returns the dict of available games
+    """ Returns the dict of available games
 
     :return: list of dict
     """

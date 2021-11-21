@@ -15,16 +15,14 @@ class AppGlobals:
     """Defines all the global variables needed for the application"""
 
     def __init__(self):
-        """
-        Defines global variables
+        """ Defines global variables
         """
         self.__app_info()
         self.__app_settings()
         self.__operation_global_variables()
 
     def __app_info(self) -> None:
-        """
-        Defines all the app information
+        """ Defines all the app information
 
         :return: None
         """
@@ -38,13 +36,14 @@ class AppGlobals:
         self.__project_wiki_link__ = "https://github.com/sashwat-project-software/sash-arcade/wiki"
 
     def __app_settings(self) -> None:
-        """
-        Defines global UI settings for the application
+        """ Defines global UI settings for the application
 
         :return: None
         """
         # Main Windows Settings
         self.app_title = "SashArcade :: Simple set of FOSS games"
+        self.app_width_x = 500
+        self.app_height_y = 300
         self.app_padding_x = 50
         self.app_padding_y = 50
         # About Window Settings
@@ -57,4 +56,4 @@ class AppGlobals:
 
         :return: None
         """
-        self.app_path = os.path.dirname(__file__)
+        self.app_path = os.path.dirname(os.path.dirname(__file__))
