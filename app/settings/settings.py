@@ -49,6 +49,14 @@ class AppGlobals:
         self.app_about_title = f"{self.app_title} :: About Us"
         self.app_about_width_x = 0
         self.app_about_height_y = 0
+        self.title_label_main_name = "Welcome to SashArcade"
+        self.title_label_sub_name = "A collection for small games!"
+        self.title_main_font = ("Arial", 24, "bold")
+        self.title_sub_font = ("Arial", 18, "italic")
+        self.table_header_font = ("Arial", 14, "bold")
+        self.table_row_font = ("Arial", 14)
+        self.window_bg_color = "#9AE66E"
+        self.window_fg_color = "#753188"
 
     def __operation_global_variables(self) -> None:
         """ Definition to define app global variables

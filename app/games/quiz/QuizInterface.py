@@ -17,7 +17,6 @@ class QuizInterface:
         # Defines labels
         self.__define_labels()
         self.__ask_username()
-
         self.window.mainloop()
 
     def __define_window_settings(self) -> None:
@@ -37,7 +36,7 @@ class QuizInterface:
                                           bg=settings.window_bg_color, font=settings.header)
         self.header_label.grid(row=0, column=0, columnspan=2)
         self.username_label = tkinter.Label(text=f"Username: {settings.user_name}", fg=settings.window_fg_color,
-                                      bg=settings.window_bg_color, font=settings.score_font)
+                                            bg=settings.window_bg_color, font=settings.score_font)
         self.username_label.grid(row=1, column=0, pady=10)
         self.score_label = tkinter.Label(text=f"Score: {settings.final_score}", fg=settings.window_fg_color,
                                          bg=settings.window_bg_color, font=settings.score_font)
