@@ -57,3 +57,4 @@ class AppGlobals:
         :return: None
         """
         self.app_path = os.path.dirname(os.path.dirname(__file__))
+        self.settings_path = os.path.join(self.app_path, "settings", "settings.json")

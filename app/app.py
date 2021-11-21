@@ -13,8 +13,10 @@ import tkinter
 import tkinter.messagebox
 import os
 import webbrowser
+import subprocess, os, platform
 # App Local Libraries
 from settings.settings import AppGlobals
+
 # from games.quiz.app import quiz
 
 # Global Variables for UI
@@ -37,7 +39,11 @@ def main() -> None:
     window.title(settings.app_title)
     window.config(padx=settings.app_padding_x, pady=settings.app_padding_y)
     # Menubar
+    def open_editor(x=settings.settings_path): open_json_file(x)
     menubar = tkinter.Menu(window)
+    app_file = tkinter.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="File", menu=app_file)
+    app_file.add_command(label="Settings", command=open_editor)
     app_help = tkinter.Menu(menubar, tearoff=0)
     menubar.add_cascade(label="Help", menu=app_help)
     app_help.add_command(label=f"About {settings.__app_name__}", command=None)
@@ -48,6 +54,15 @@ def main() -> None:
     window_labels()
     # Defines tkinter window loop
     window.mainloop()
+
+
+def open_json_file(filename) -> None:
+    if platform.system() == "Darwin":
+        subprocess.call(("open", filename))
+    elif platform.system() == "Windows":
+        os.startfile(filename)
+    else:
+        subprocess.call(('xdg-open', filename))
 
 
 def open_doc_link() -> None: webbrowser.open(settings.__project_wiki_link__, new=2)
@@ -82,21 +97,26 @@ def generate_table() -> None:
     table_header_name = tkinter.Label(text="Game Name", font=table_header_font)
     table_header_name.grid(row=2, column=2, padx=10, pady=10)
     table_header_name = tkinter.Label(text="Option", font=table_header_font)
-    table_header_name.grid(row=2, column=3, padx=10, pady=10)
+    table_header_name.grid(row=2, column=3, padx=10, pady=10, columnspan=2)
     game_data = get_game_list()
     game_ui_dict = {}
     for index, data in enumerate(game_data):
-        def action(x=data): open_game(x)
+        def action_play(x=data): open_game(x)
+
+        def action_settings(x=data): open_game_settings(x)
+
         row_dict = {
             "sl_no": tkinter.Label(text=index + 1, font=table_row_font),
             "logo": tkinter.Label(text="-", font=table_row_font),
             "game_name": tkinter.Label(text=data["game_name"], font=table_row_font),
-            "play_button": tkinter.Button(text="Play!", command=action)
+            "play_button": tkinter.Button(text="Play!", command=action_play),
+            "settings_button": tkinter.Button(text="settings", command=action_settings)
         }
         row_dict["sl_no"].grid(row=index + 3, column=0)
         row_dict["logo"].grid(row=index + 3, column=1)
         row_dict["game_name"].grid(row=index + 3, column=2)
         row_dict["play_button"].grid(row=index + 3, column=3)
+        row_dict["settings_button"].grid(row=index + 3, column=4)
         game_ui_dict[data["game_name"]] = row_dict
 
 
@@ -109,7 +129,17 @@ def open_game(game_name) -> None:
     tkinter.messagebox.showinfo(
         f"Opening {game_name['game_name']}",
         f"Opening game {game_name['game_name']}!!")
-    # quiz()
+
+
+def open_game_settings(game_name) -> None:
+    """
+
+    :return:
+    """
+    tkinter.messagebox.showinfo(
+        f"Opening {game_name['game_name']}",
+        f"Opening game {game_name['game_name']} settings!!")
+    open_json_file(game_name["game_settings"])
 
 
 def get_game_list() -> list:
@@ -124,10 +154,12 @@ def get_game_list() -> list:
         if os.path.isdir(os.path.join(game_path, i)):
             logo_path = os.path.join(game_path, i, "logo.png")
             game_py_path = os.path.join(game_path, i, "app.py")
+            game_setting_path = os.path.join(os.path.dirname(game_py_path), "settings", "settings.json")
             game_dict = {
                 "game_name": i,
                 "logo_path": logo_path if os.path.exists(logo_path) else None,
-                "game_path": game_py_path if os.path.exists(game_py_path) else None
+                "game_path": game_py_path if os.path.exists(game_py_path) else None,
+                "game_settings": game_setting_path if os.path.exists(game_setting_path) else None
             }
             game_info.append(game_dict)
     return game_info

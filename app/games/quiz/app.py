@@ -9,9 +9,6 @@
 """
 
 import tkinter
-import sys
-sys.path.append("../../")
-from settings import AppGlobals
 # Global variables for App
 settings = AppGlobals()
 
